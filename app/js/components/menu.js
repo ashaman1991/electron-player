@@ -1,13 +1,7 @@
-var MainMenu = React.createClass({
-  render: function () {
-    return (
-      <div className="menu">
-        Hello, world!
-      </div>
-    );
+import React from 'react';
+
+export default class Hello extends React.Component {
+  render() {
+    return <h1>Hello</h1>
   }
-});
-ReactDOM.render(
-  <MainMenu />,
-  document.getElementById('content')
-);
+}

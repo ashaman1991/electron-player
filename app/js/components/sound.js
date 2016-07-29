@@ -1,13 +1,12 @@
 import React from 'react';
 const remote = require('electron').remote;
 const dialog = remote.dialog;
-const fs = require('fs');
-const Player = require('player');;
+// const fs = require('fs');
 
 export default class Sound extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { current: null };
+    this.state = { current: './build/marshmallow.mp3' };
     this.openThing = this.openThing.bind(this)
     this.play = this.play.bind(this)
   }
@@ -18,28 +17,26 @@ export default class Sound extends React.Component {
 
   play() {
     if (this.state.current) {
-      let player = new Player(this.state.current, (err, player) => {
-        console.log(err, this.state.current);
-      });
-      console.log(player);
-      // event: on playing 
-      player.on('playing', function (item) {
-        console.log('im playing... src:' + item);
-      });
+      // let player = new Player(this.state.current);
+      // console.log(player);
+      // // event: on playing 
+      // player.on('playing', function (item) {
+      //   console.log('im playing... src:' + item);
+      // });
 
-      // event: on playend 
-      player.on('playend', function (item) {
-        // return a playend item 
-        console.log('src:' + item + ' play done, switching to next one ...');
-      });
+      // // event: on playend 
+      // player.on('playend', function (item) {
+      //   // return a playend item 
+      //   console.log('src:' + item + ' play done, switching to next one ...');
+      // });
 
-      // event: on error 
-      player.on('error', function (err) {
-        // when error occurs 
-        console.log(err);
-      });
+      // // event: on error 
+      // player.on('error', function (err) {
+      //   // when error occurs 
+      //   console.log(err);
+      // });
 
-      player.play();
+      // player.play();
     }
   }
 

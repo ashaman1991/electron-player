@@ -14,7 +14,7 @@ export default class Playlist extends React.Component {
     });
   }
   render() {
-   return <List style={{'background-color': 'rgb(232, 232, 232)'}}>
+   return <List style={{'backgroundColor': 'rgb(232, 232, 232)'}}>
       {this.getItems()}
     </List>
   }

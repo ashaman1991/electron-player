@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 require('font-awesome-webpack');
-require('../styles/style.scss');
+require('./assets/styles/style.scss');
 
 ReactDOM.render(
   <MuiThemeProvider>

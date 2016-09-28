@@ -6,15 +6,9 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 
 var fs = require('fs');
-// var lame = require('lame');
 console.log(process.versions.electron);
 console.log(process.versions.node);
 var Speaker = require('speaker');
-
-// fs.createReadStream('./marshmallow.mp3')
-//   .pipe(new lame.Decoder)
-//   .on('format', console.log)
-//   .pipe(new Speaker);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

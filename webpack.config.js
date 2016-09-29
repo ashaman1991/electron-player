@@ -8,7 +8,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [new HtmlWebpackPlugin({
-    title: 'My Electorn App',
+    title: 'Positron payer',
     filename: 'index.html',
     template: 'app/index.ejs'
   })],

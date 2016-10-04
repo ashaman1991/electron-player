@@ -12,8 +12,17 @@ const mapDispatchToProps = (dispatch) => {
     add: (item) => {
       dispatch(actions.playlistAdd(item))
     },
-    setCurrent: (item) => { 
+    setCurrent: (item) => {
       dispatch(actions.setCurrent(item))
+    },
+    setProgress: ({played, loaded}) => {
+      dispatch(actions.setProgress(played))
+    },
+    setCurrentDuration: (duration) => {
+      dispatch(actions.setCurrentDuration(duration))
+    },
+    setVolume: (event, volume) => {
+      dispatch(actions.setVolume(volume))
     }
   }
 }
@@ -25,7 +34,8 @@ const mapStateToProps = (state) => {
     progress: state.player.progress,
     // status: 'stopped',
     isPlaying: state.player.isPlaying,
-    volume: state.player.volume
+    volume: state.player.volume,
+    duration: state.player.duration
   }
 }
 

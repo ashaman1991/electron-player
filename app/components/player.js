@@ -1,11 +1,14 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import Play from 'material-ui/svg-icons/av/play-circle-filled';
 import Stop from 'material-ui/svg-icons/av/stop';
 import Pause from 'material-ui/svg-icons/av/pause-circle-filled';
 import ReactPlayer from 'react-player'
+import Slider from 'material-ui/Slider'
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 // Needed for onTouchTap
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -42,8 +45,10 @@ export default class Sound extends React.Component {
         properties: ['openFile']
       },
       ([file, ...rest]) => {
-        this.props.add(file)
-        if (!this.props.current.length) this.props.setCurrent(file)
+        if (file) {
+          this.props.add(file)
+          if (!this.props.current.length) this.props.setCurrent(file)
+        }
       });
   }
 
@@ -53,9 +58,23 @@ export default class Sound extends React.Component {
 
   render() {
     return <div>
+      <FloatingActionButton onClick={this.add} style={{ float: 'right', marginRight: 20, position: 'absolute', bottom: '15px', right: '3px' }}>
+        <ContentAdd />
+      </FloatingActionButton>
       <ReactPlayer
         url={this.props.current}
         playing={this.props.isPlaying}
+        volume = {this.props.volume}
+        onDuration = {this.props.setCurrentDuration}
+        onReady	={console.log.bind(console) }
+        onStart	={console.log.bind(console) }
+        onPlay	={console.log.bind(console) }
+        onProgress={this.props.setProgress}
+        onPause	={console.log.bind(console) }
+        onBuffer	={console.log.bind(console) }
+        onEnded	={console.log.bind(console) }
+        onError	={console.log.bind(console) }
+        progressFrequency = {Number(100) }
         hidden={true} />
       <Toolbar>
         <ToolbarGroup >
@@ -71,13 +90,22 @@ export default class Sound extends React.Component {
             style={styles.medium} tooltipPosition="bottom-center">
             <Stop />
           </IconButton>
-          <RaisedButton onClick={this.add}> Open </RaisedButton> <br/>
+          <Slider
+            style={{ width: 200 }}
+            value={this.props.volume}
+            onChange={this.props.setVolume}/>
         </ToolbarGroup>
         <ToolbarSeparator />
+        <ToolbarGroup>
+          <ToolbarTitle text={this.props.duration} />
+        </ToolbarGroup>
+      </Toolbar>
+      <Toolbar>
         <ToolbarGroup >
           <ToolbarTitle text={this.getFileName(this.props.current) } />
         </ToolbarGroup>
       </Toolbar>
+      <Slider value={this.props.progress} />
     </div>
   }
 }

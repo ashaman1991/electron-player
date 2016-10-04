@@ -44,3 +44,24 @@ export function prev() {
     type: types.PLAYER_PREV
   };
 }
+
+export function setProgress(state) { 
+  return {
+    type: types.PLAYER_SET_PROGRESS,
+    state
+  }
+}
+
+export function setCurrentDuration(state) { 
+  return {
+    type: types.PLAYER_SET_DURATION,
+    state
+  }
+}
+
+export function setVolume(state) { 
+  return {
+    type: types.PLAYER_SET_VOLUME,
+    state
+  }
+}

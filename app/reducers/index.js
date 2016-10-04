@@ -7,7 +7,7 @@ const initialState = {
   player: {
     current: '',
     payingName: '',
-    progress: 0,
+    progress: 0, // 0-100
     status: 'stopped',
     isPlaying: false,
     volume: 0.5

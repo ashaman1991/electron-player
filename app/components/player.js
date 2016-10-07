@@ -9,7 +9,7 @@ import ReactPlayer from 'react-player'
 import Slider from 'material-ui/Slider'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-
+import audioMetaData from 'audio-metadata'
 // Needed for onTouchTap
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -56,11 +56,28 @@ export default class Sound extends React.Component {
     return path.basename(filePath);
   }
 
+  addFile(e) {
+    const file = e.target.files[0];
+    this.props.add(file.path)
+    if (!this.props.current.length) this.props.setCurrent(file.path)
+
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      var metadata = audioMetaData.id3v2(this.result);
+    };
+
+    reader.readAsArrayBuffer(file);
+  }
+
   render() {
     return <div>
-      <FloatingActionButton onClick={this.add} style={{ float: 'right', marginRight: 20, position: 'absolute', bottom: '15px', right: '3px' }}>
-        <ContentAdd />
-      </FloatingActionButton>
+      <div className='outer-button'>
+        <label className='inner-button'>
+          <ContentAdd/>
+          <input type='file' style={{ display: 'none' }} onChange={this.addFile.bind(this) }/>
+        </label>
+      </div>
       <ReactPlayer
         url={this.props.current}
         playing={this.props.isPlaying}
@@ -105,6 +122,7 @@ export default class Sound extends React.Component {
           <ToolbarTitle text={this.getFileName(this.props.current) } />
         </ToolbarGroup>
       </Toolbar>
+
       <Slider value={this.props.progress} />
     </div>
   }

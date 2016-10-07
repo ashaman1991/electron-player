@@ -18,7 +18,6 @@ ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>
       <div>
-        <Devtools />
         <Player />
         <Playlist />
       </div>
@@ -26,3 +25,5 @@ ReactDOM.render(
   </Provider >,
   document.getElementById('content')
 );
+
+//        <Devtools />

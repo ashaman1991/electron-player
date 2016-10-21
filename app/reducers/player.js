@@ -1,7 +1,7 @@
 import * as types from '../constants'
 
 const initialPlayerState = {
-  current: 'https://www.youtube.com/watch?v=rQg2qngyIZM',
+  current: '',
   payingName: '',
   progress: 0,
   duration: '0:00',

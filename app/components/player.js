@@ -1,5 +1,4 @@
 import React from 'react';
-// import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import Play from 'material-ui/svg-icons/av/play-circle-filled';
@@ -64,7 +63,9 @@ export default class Sound extends React.Component {
     var reader = new FileReader();
 
     reader.onload = function (e) {
+      // Todo: get rid of rubbish symbols in metadata
       var metadata = audioMetaData.id3v2(this.result);
+      // console.log(metadata);
     };
 
     reader.readAsArrayBuffer(file);

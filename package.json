@@ -1,7 +1,7 @@
 {
-  "name": "electron-test",
+  "name": "positron-player",
   "version": "1.0.0",
-  "description": "try building electron app",
+  "description": "Simple mp3 player built with electron",
   "main": "main.js",
   "scripts": {
     "start": "webpack --progress --colors ; electron ./",
@@ -53,5 +53,13 @@
     "stream-player": "^0.3.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashaman1991/electron-player.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashaman1991/electron-player/issues"
+  },
+  "homepage": "https://github.com/ashaman1991/electron-player#readme"
 }

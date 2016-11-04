@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import More from 'material-ui/svg-icons/navigation/more-vert';
 
 export default class Playlist extends React.Component {
@@ -10,13 +10,14 @@ export default class Playlist extends React.Component {
 
   getItems() {
     return this.props.list.map((item, index) => {
-      return <ListItem key={index} primaryText={`${index+1}. ${item}`} rightIcon={<More />} />
+      console.log(item);
+      return <ListItem key={index} primaryText={`${index + 1}. ${item.title} - ${item.artist}`} rightIcon={<More />} />
     });
   }
-  
+
   render() {
     return <List style={{ 'backgroundColor': 'rgb(232, 232, 232)' }}>
-      { this.getItems() }
+      {this.getItems()}
     </List>
   }
 }

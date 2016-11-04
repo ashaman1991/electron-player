@@ -1,7 +1,7 @@
 import * as types from '../constants'
 
 const initialPlayerState = {
-  current: '',
+  current: { title: '', path: '', artist: '' },
   payingName: '',
   progress: 0,
   duration: '0:00',
